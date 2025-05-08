@@ -1,3 +1,29 @@
+
+'use client';
+
+import { ThemeProvider, CssBaseline } from '@mui/material';
+import { theme } from './theme';  // az előbb írt theme fájl
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="hu">
+      <body>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />     {/* Alapértelmezett böngészőstílusok nullázása */}
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
+
+
+
+/*
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -32,3 +58,4 @@ export default function RootLayout({
     </html>
   );
 }
+*/
