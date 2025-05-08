@@ -1,6 +1,6 @@
 
 import {mongoose} from 'mongoose';
-import {Schema, model, Document} from 'mongoose';
+import {Schema, model, models, Document} from 'mongoose';
 
 const productSchema = new Schema({
     name: {type: String, required: true},
@@ -23,4 +23,6 @@ const productSchema = new Schema({
         createdAt: Date;
         updatedAt: Date;
     }
-    export const Product = model<IProduct>('Product', productSchema);
+
+    // Check if the model already exists, otherwise create it
+export const Product = models.Product || model<IProduct>('Product', productSchema);
