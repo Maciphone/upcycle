@@ -1,5 +1,5 @@
 
-import {mongoose} from 'mongoose';
+import mongoose, {Types} from 'mongoose';
 import {Schema, model, models, Document} from 'mongoose';
 
 const productSchema = new Schema({
@@ -14,6 +14,7 @@ const productSchema = new Schema({
     });
 
     export interface IProduct extends Document {
+        _id: Types.ObjectId; // MongoDB ObjectId
         name: string;
         description: string;
         price: number;

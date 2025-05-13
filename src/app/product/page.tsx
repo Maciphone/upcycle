@@ -1,12 +1,14 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 import { useEffect, useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import Link from 'next/link';
+import { IProduct } from '@/models/Product';
 
 type Product = { id: string; name: string };
 
 export default function ProductListPage() {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<IProduct[]>([]);
   const [loading, setLoading]   = useState(true);
   const [error, setError]       = useState<string|null>(null);
 
@@ -15,7 +17,7 @@ export default function ProductListPage() {
       try {
         const response = await fetch('/api/products');     // <-- idejön a slash és nincs .GET
         if (!response.ok) throw new Error(`Hálózati hiba: ${response.status}`);
-        const data: Product[] = await response.json();
+        const data: IProduct[] = await response.json();
         setProducts(data);
         console.log('Fetched products:', data); // Debug log
       } catch (err: any) {
@@ -34,10 +36,21 @@ export default function ProductListPage() {
     <Box sx={{ p: 4 }}>
       <Typography variant="h4" gutterBottom>Termékek</Typography>
       {products.map(p => (
-        <Link key={p.id} href={`/product/${p.id}`} passHref>
-          <Button variant="outlined" sx={{ m: 1 }}>{p.name}</Button>
+        <Link key={p._id} href={`/product/${p._id}`} passHref>
+          <Button variant="outlined" sx={{ m: 1 }}>
+            <img
+              src={p.imageUrl}
+              alt={p.name}
+              style={{ maxWidth: '100%', borderRadius: '8px', marginBottom: '16px' }}
+            />
+          </Button>
         </Link>
       ))}
+      <Link href="/product/new" passHref>
+        <Button variant="contained" sx={{ mt: 2 }}>
+           New
+        </Button>
+      </Link>
     </Box>
   );
 }
