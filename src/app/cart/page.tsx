@@ -17,6 +17,7 @@ import {
 import { useCart } from "@/context/CartContext";
 import { Add, Remove, Delete } from "@mui/icons-material";
 import Image from "next/image";
+import { TableFooter } from "@mui/material";
 
 export default function CartPage() {
   const {
@@ -26,6 +27,7 @@ export default function CartPage() {
     decreaseQuantity,
     removeFromCart,
     clearCart,
+    sumCart,
   } = useCart();
 
   const handleChange =
@@ -138,6 +140,19 @@ export default function CartPage() {
               </TableBody>
             </Table>
           </TableContainer>
+          <TableFooter>
+            <TableRow>
+              <TableCell colSpan={3} align="right">
+                <Typography variant="h6">Összesen:</Typography>
+              </TableCell>
+              <TableCell align="center">
+                <Typography variant="h6">
+                  {sumCart().toLocaleString()} Ft
+                </Typography>
+              </TableCell>
+              <TableCell />
+            </TableRow>
+          </TableFooter>
 
           <Box mt={3} textAlign="right">
             <Button variant="contained" color="secondary" onClick={clearCart}>
