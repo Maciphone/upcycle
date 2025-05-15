@@ -84,7 +84,18 @@ export default function ProductDetailPage() {
         style={{ maxWidth: "100%", borderRadius: "8px", marginBottom: "16px" }}
       />
       <Button
-        onClick={() => addToCart({ id: "123", name: "Hátizsák", quantity: 1 })}
+        onClick={() =>
+          addToCart({
+            id: product._id.toString(),
+            name: product.name,
+            quantity: 1,
+            price: product.price,
+            imageUrl: product.imageUrl,
+            description: product.description,
+            category: product.category,
+            stockQuantity: product.stockQuantity,
+          })
+        }
       >
         Kosárba
       </Button>
