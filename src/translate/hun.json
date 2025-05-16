@@ -1,0 +1,21 @@
+{
+    "app": {
+        "ez_egy_doboz_belseje": "Ez egy doboz belseje"
+    },
+    "cart": {
+        "kép": "Kép",
+        "mennyiség": "Mennyiség",
+        "nincs_termék_a_kosárban.": "Nincs termék a kosárban.",
+        "termék": "Termék",
+        "törlés": "Törlés",
+        "összeg": "Összeg",
+        "összesen": "Összesen:"
+    },
+    "product": {
+        "betöltés…": "Betöltés…",
+        "hiba": "Hiba:"
+    },
+    "[id]": {
+        "back_to_product_list": "Back to Product List"
+    }
+}

@@ -18,6 +18,7 @@ import { useCart } from "@/context/CartContext";
 import { Add, Remove, Delete } from "@mui/icons-material";
 import Image from "next/image";
 import { TableFooter } from "@mui/material";
+import Link from "next/link";
 
 export default function CartPage() {
   const {
@@ -70,13 +71,15 @@ export default function CartPage() {
                     </TableCell>
 
                     <TableCell align="center">
-                      <Image
-                        src={item.imageUrl}
-                        alt={item.name}
-                        width={60}
-                        height={60}
-                        style={{ borderRadius: 4 }}
-                      />
+                      <Link href={`/product/${item.id}`} passHref>
+                        <Image
+                          src={item.imageUrl}
+                          alt={item.name}
+                          width={60}
+                          height={60}
+                          style={{ borderRadius: 4 }}
+                        />
+                      </Link>
                     </TableCell>
 
                     <TableCell align="center">

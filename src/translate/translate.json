@@ -1,0 +1,21 @@
+{
+    "app": {
+        "ez_egy_doboz_belseje": null
+    },
+    "cart": {
+        "kép": null,
+        "mennyiség": null,
+        "nincs_termék_a_kosárban.": null,
+        "termék": null,
+        "törlés": null,
+        "összeg": null,
+        "összesen": null
+    },
+    "product": {
+        "betöltés…": null,
+        "hiba": null
+    },
+    "[id]": {
+        "back_to_product_list": null
+    }
+}

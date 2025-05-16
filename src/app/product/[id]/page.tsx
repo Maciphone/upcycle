@@ -64,19 +64,19 @@ export default function ProductDetailPage() {
   return (
     <Box sx={{ p: 4 }}>
       <Typography variant="h4" gutterBottom>
-        {product.name}
+        Termék név:{product.name}
       </Typography>
       <Typography variant="body1" sx={{ mb: 2 }}>
-        {product.description}
+        Leírás: {product.description}
       </Typography>
       <Typography variant="h6" sx={{ mb: 1 }}>
         Price: ${product.price}
       </Typography>
       <Typography variant="body2" sx={{ mb: 1 }}>
-        Category: {product.category}
+        Kategória: {product.category}
       </Typography>
       <Typography variant="body2" sx={{ mb: 1 }}>
-        Stock Quantity: {product.stockQuantity}
+        Készlet: {product.stockQuantity}
       </Typography>
       <img
         src={product.imageUrl}
