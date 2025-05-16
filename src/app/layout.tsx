@@ -1,8 +1,9 @@
+"use client";
 
-'use client';
-
-import { ThemeProvider, CssBaseline } from '@mui/material';
-import { theme } from './theme';  // az előbb írt theme fájl
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import { theme } from "./theme"; // az előbb írt theme fájl
+import Header from "@/components/Header";
+import { CartProvider } from "@/context/CartContext";
 
 export default function RootLayout({
   children,
@@ -12,16 +13,19 @@ export default function RootLayout({
   return (
     <html lang="hu">
       <body>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />     {/* Alapértelmezett böngészőstílusok nullázása */}
-          {children}
-        </ThemeProvider>
+        <Header /> {/* Fejléc hozzáadása */}
+        <CartProvider>
+          {" "}
+          {/* Kosár kontextus hozzáadása */}
+          <ThemeProvider theme={theme}>
+            <CssBaseline /> {/* Alapértelmezett böngészőstílusok nullázása */}
+            {children}
+          </ThemeProvider>
+        </CartProvider>
       </body>
     </html>
   );
 }
-
-
 
 /*
 import type { Metadata } from "next";
