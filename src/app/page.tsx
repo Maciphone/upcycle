@@ -1,42 +1,45 @@
+"use client";
 
-
-'use client';
-
-import { Container, Typography, Button , TextField, Box} from '@mui/material';
-import { useState } from 'react';
+import { Container, Typography, Button, TextField, Box } from "@mui/material";
+import { useState } from "react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function HomePage() {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const [count, setCount] = useState(0);
+  const { t } = useTranslation("deu");
 
   const handleClick = () => {
-    const newCount:number = (count + 1) % 4; // 0-3 között váltakozik
+    const newCount: number = (count + 1) % 4; // 0-3 között váltakozik
     setCount(newCount);
     // setCount(prev => (prev + 1) % 4); // Alternatív megoldás
-  
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
   };
- 
+
   const getColor = () => {
     switch (count) {
-      case 0: return 'success';   
-      case 1: return 'primary';   
-      case 2: return 'warning';   
-      default: return 'error';    
+      case 0:
+        return "success";
+      case 1:
+        return "primary";
+      case 2:
+        return "warning";
+      default:
+        return "error";
     }
   };
 
   return (
     <Container maxWidth="sm" sx={{ mt: 8 }}>
       <Typography variant="h3" gutterBottom>
-        Üdv az UpCycle Shopban!
+        {t("app.Üdv az UpCycle Shopban!")}
       </Typography>
 
       <Typography variant="h5" sx={{ mb: 2 }}>
-        Kattintások száma: {count}
+        {t("app.Kattintások száma:")} {count}
       </Typography>
       <TextField
         label="ezt fogod látni"
@@ -45,24 +48,33 @@ export default function HomePage() {
         color={getColor()} // színváltoztatás
         fullWidth
         sx={{ mb: 2 }}
-       value={value}
+        value={value}
         onChange={handleChange}
       />
-       <Typography variant="h4" sx={{ mb: 2 }}>
-        Beírt szöveg: {value}
+      <Typography variant="h4" sx={{ mb: 2 }}>
+        {t("app.Beírt szöveg:")} {value}
       </Typography>
 
       <Button
         variant="contained"
-        color={getColor()}          
+        color={getColor()}
         size="large"
         onClick={handleClick}
       >
-        Fedezd fel
+        {t("app.Fedezd fel")}
       </Button>
-      <Box sx={{ p: 4, backgroundColor: 'background.paper', borderRadius: 2, mt: 4 }}>
-  <Typography variant="overline" >Ez egy doboz belseje</Typography>
-</Box>
+      <Box
+        sx={{
+          p: 4,
+          backgroundColor: "background.paper",
+          borderRadius: 2,
+          mt: 4,
+        }}
+      >
+        <Typography variant="overline">
+          {t("app.Ez egy doboz belseje")}
+        </Typography>
+      </Box>
     </Container>
   );
 }

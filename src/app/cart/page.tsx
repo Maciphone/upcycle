@@ -141,21 +141,21 @@ export default function CartPage() {
                   </TableRow>
                 ))}
               </TableBody>
+              <TableFooter>
+                <TableRow>
+                  <TableCell colSpan={3} align="right">
+                    <Typography variant="h6">Összesen:</Typography>
+                  </TableCell>
+                  <TableCell align="center">
+                    <Typography variant="h6">
+                      {sumCart().toLocaleString()} Ft
+                    </Typography>
+                  </TableCell>
+                  <TableCell />
+                </TableRow>
+              </TableFooter>
             </Table>
           </TableContainer>
-          <TableFooter>
-            <TableRow>
-              <TableCell colSpan={3} align="right">
-                <Typography variant="h6">Összesen:</Typography>
-              </TableCell>
-              <TableCell align="center">
-                <Typography variant="h6">
-                  {sumCart().toLocaleString()} Ft
-                </Typography>
-              </TableCell>
-              <TableCell />
-            </TableRow>
-          </TableFooter>
 
           <Box mt={3} textAlign="right">
             <Button variant="contained" color="secondary" onClick={clearCart}>

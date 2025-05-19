@@ -1,0 +1,30 @@
+{
+  "app": {
+    "ez_egy_doboz_belseje": "That's the inside of the box"
+  },
+  "cart": {
+    "kép": "Picture",
+    "mennyiség": "Quantity",
+    "nincs_termék_a_kosárban.": "There is no product in the cart",
+    "termék": "Product",
+    "törlés": "Delete",
+    "összeg": "Sum",
+    "összesen": "Total:"
+  },
+  "[id]": {
+    "back_to_product_list": "Back to Product List"
+  },
+  "header": {
+    "bejelentkezés": "Login",
+    "regisztráció": "Registration",
+    "Kosár": "BASKET",
+    "Termékek": "Products",
+    "nyelv": "Language",
+    "Upcycle": "Upcycle",
+    "Kapcsolat": "Contact"
+  },
+  "product": {
+    "betöltés…": "Loading…",
+    "hiba": "Error:"
+  }
+}
