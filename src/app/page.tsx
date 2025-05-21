@@ -7,7 +7,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 export default function HomePage() {
   const [value, setValue] = useState("");
   const [count, setCount] = useState(0);
-  const { t } = useTranslation("deu");
+  const { t } = useTranslation("french");
 
   const handleClick = () => {
     const newCount: number = (count + 1) % 4; // 0-3 között váltakozik

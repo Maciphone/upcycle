@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useState } from "react";
+import LanguageSelect from "./LanguageSelect";
 
 const navLinks = [
   {
@@ -19,11 +20,8 @@ const navLinks = [
 ];
 
 export default function Header() {
-  const [language, setLanguage] = useState("hun");
-  const handleLanguageChange = (lang: string) => {
-    setLanguage(lang);
-    // Itt lehetne a nyelvet megváltoztatni, pl. localStorage-ben tárolni
-  };
+  const [language, setLanguage] = useState("hu");
+
   const { t } = useTranslation(language);
   return (
     <AppBar position="static" color="success">
@@ -61,12 +59,10 @@ export default function Header() {
             </Link>
           ))}
         </Stack>
-        <button type="button" onClick={() => handleLanguageChange("deu")}>
-          Deutsch
-        </button>
-        <button type="button" onClick={() => handleLanguageChange("hun")}>
-          hunglish
-        </button>
+        <LanguageSelect
+          value={language}
+          onChange={(e) => setLanguage(e.target.value)}
+        />
       </Toolbar>
     </AppBar>
   );
