@@ -1,0 +1,34 @@
+{
+    "app": {
+        "Üdv az UpCycle Shopban!": "Üdv az UpCycle Shopban!",
+        "Ez egy doboz belseje": "Ez egy doboz belseje",
+        "Kattintások száma:": "Kattintások száma:",
+        "Beírt szöveg:": "Beírt szöveg:",
+        "Fedezd fel": "Fedezd fel"
+    },
+    "cart": {
+        "kép": "Kép",
+        "mennyiség": "Mennyiség",
+        "nincs_termék_a_kosárban.": "Nincs termék a kosárban.",
+        "termék": "Termék",
+        "törlés": "Törlés",
+        "összeg": "Összeg",
+        "összesen": "Összesen:"
+    },
+    "product": {
+        "betöltés…": "Betöltés…",
+        "hiba": "Hiba:"
+    },
+    "[id]": {
+        "back_to_product_list": "Back to Product List"
+    },
+    "header": {
+        "bejelentkezés": "Bejelentkezés",
+        "regisztráció": "Regisztráció",
+        "Kosár": "BASKET",
+        "Termékek": "Termékek",
+        "nyelv": "Nyelv",
+        "Upcycle": "UpcycleMAAACI",
+        "Kapcsolat": "Kapcsolat"
+    }
+}

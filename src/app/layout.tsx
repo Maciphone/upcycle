@@ -4,6 +4,7 @@ import { ThemeProvider, CssBaseline } from "@mui/material";
 import { theme } from "./theme"; // az előbb írt theme fájl
 import Header from "@/components/Header";
 import { CartProvider } from "@/context/CartContext";
+import ReduxProvider from "@/redux/ReduxProvider";
 
 export default function RootLayout({
   children,
@@ -13,15 +14,15 @@ export default function RootLayout({
   return (
     <html lang="hu">
       <body>
-        <Header /> {/* Fejléc hozzáadása */}
-        <CartProvider>
-          {" "}
-          {/* Kosár kontextus hozzáadása */}
-          <ThemeProvider theme={theme}>
-            <CssBaseline /> {/* Alapértelmezett böngészőstílusok nullázása */}
-            {children}
-          </ThemeProvider>
-        </CartProvider>
+        <ReduxProvider>
+          <CartProvider>
+            <ThemeProvider theme={theme}>
+              <CssBaseline />
+              <Header />
+              {children}
+            </ThemeProvider>
+          </CartProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

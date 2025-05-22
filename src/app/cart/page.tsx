@@ -15,9 +15,13 @@ import {
   Box,
 } from "@mui/material";
 import { useCart } from "@/context/CartContext";
-import { Add, Remove, Delete } from "@mui/icons-material";
+import { Add, Remove, Delete, Language } from "@mui/icons-material";
 import Image from "next/image";
 import { TableFooter } from "@mui/material";
+import Link from "next/link";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useSelector } from "react-redux";
+import { selectedLanguage } from "@/redux/languageSlice";
 
 export default function CartPage() {
   const {
@@ -30,6 +34,9 @@ export default function CartPage() {
     sumCart,
   } = useCart();
 
+  const lang = useSelector(selectedLanguage);
+  const { t } = useTranslation(lang);
+
   const handleChange =
     (id: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
       const value = parseInt(e.target.value, 10);
@@ -41,22 +48,22 @@ export default function CartPage() {
   return (
     <Box sx={{ p: 4 }}>
       <Typography variant="h4" gutterBottom>
-        Kosár tartalma
+        {t("cart.Kosár tartalma")}
       </Typography>
 
       {cart.length === 0 ? (
-        <Typography>Nincs termék a kosárban.</Typography>
+        <Typography>{t("cartNincs termék a kosárban")}</Typography>
       ) : (
         <>
           <TableContainer component={Paper} sx={{ overflowX: "auto" }}>
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell>Termék</TableCell>
-                  <TableCell align="center">Kép</TableCell>
-                  <TableCell align="center">Mennyiség</TableCell>
-                  <TableCell align="center">Összeg</TableCell>
-                  <TableCell align="center">Törlés</TableCell>
+                  <TableCell>{t("cart.Termék")}</TableCell>
+                  <TableCell align="center">{t("cart.Kép")}</TableCell>
+                  <TableCell align="center">{t("cart.Mennyiség")}</TableCell>
+                  <TableCell align="center">{t("cart.Összeg")}</TableCell>
+                  <TableCell align="center">{t("cart.Törlés")}</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -65,18 +72,20 @@ export default function CartPage() {
                     <TableCell>
                       <Typography variant="subtitle1">{item.name}</Typography>
                       <Typography variant="body2" color="text.secondary">
-                        Ár: {item.price.toLocaleString()} Ft
+                        {t("cart.Ár")}: {item.price.toLocaleString()} Ft
                       </Typography>
                     </TableCell>
 
                     <TableCell align="center">
-                      <Image
-                        src={item.imageUrl}
-                        alt={item.name}
-                        width={60}
-                        height={60}
-                        style={{ borderRadius: 4 }}
-                      />
+                      <Link href={`/product/${item.id}`} passHref>
+                        <Image
+                          src={item.imageUrl}
+                          alt={item.name}
+                          width={60}
+                          height={60}
+                          style={{ borderRadius: 4 }}
+                        />
+                      </Link>
                     </TableCell>
 
                     <TableCell align="center">
@@ -138,25 +147,25 @@ export default function CartPage() {
                   </TableRow>
                 ))}
               </TableBody>
+              <TableFooter>
+                <TableRow>
+                  <TableCell colSpan={3} align="right">
+                    <Typography variant="h6">{t("cart.Összesen")}</Typography>
+                  </TableCell>
+                  <TableCell align="center">
+                    <Typography variant="h6">
+                      {sumCart().toLocaleString()} Ft
+                    </Typography>
+                  </TableCell>
+                  <TableCell />
+                </TableRow>
+              </TableFooter>
             </Table>
           </TableContainer>
-          <TableFooter>
-            <TableRow>
-              <TableCell colSpan={3} align="right">
-                <Typography variant="h6">Összesen:</Typography>
-              </TableCell>
-              <TableCell align="center">
-                <Typography variant="h6">
-                  {sumCart().toLocaleString()} Ft
-                </Typography>
-              </TableCell>
-              <TableCell />
-            </TableRow>
-          </TableFooter>
 
           <Box mt={3} textAlign="right">
             <Button variant="contained" color="secondary" onClick={clearCart}>
-              Kosár ürítése
+              {t("cart.Kosár ürítése")}
             </Button>
           </Box>
         </>
