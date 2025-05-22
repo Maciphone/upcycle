@@ -1,11 +1,14 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { Typography, Button, Box, CircularProgress } from "@mui/material";
 import Link from "next/link";
 import { IProduct } from "@/models/Product";
 import { useCart } from "@/context/CartContext";
+import { useSelector } from "react-redux";
+import { selectedLanguage } from "@/redux/languageSlice";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -15,6 +18,9 @@ export default function ProductDetailPage() {
 
   const [product, setProduct] = useState<IProduct | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const lang = useSelector(selectedLanguage);
+  const { t } = useTranslation(lang);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -40,7 +46,7 @@ export default function ProductDetailPage() {
       <Box sx={{ p: 4, textAlign: "center" }}>
         <CircularProgress />
         <Typography variant="body1" sx={{ mt: 2 }}>
-          Loading product details...
+          Loading...
         </Typography>
       </Box>
     );
@@ -50,11 +56,11 @@ export default function ProductDetailPage() {
     return (
       <Box sx={{ p: 4, textAlign: "center" }}>
         <Typography variant="h6" color="error">
-          Product not found.
+          {t("[id].Termék nem található")}
         </Typography>
         <Link href="/product" passHref>
           <Button variant="outlined" sx={{ mt: 2 }}>
-            Back to Product List
+            {t("[id].Vissza a terméklistához")}
           </Button>
         </Link>
       </Box>
@@ -64,19 +70,19 @@ export default function ProductDetailPage() {
   return (
     <Box sx={{ p: 4 }}>
       <Typography variant="h4" gutterBottom>
-        Termék név:{product.name}
+        {t("[id].Termék név")}:{product.name}
       </Typography>
       <Typography variant="body1" sx={{ mb: 2 }}>
-        Leírás: {product.description}
+        {t("[id].Leírás")}: {product.description}
       </Typography>
       <Typography variant="h6" sx={{ mb: 1 }}>
-        Price: ${product.price}
+        {t("[id].Ár")}: ${product.price}
       </Typography>
       <Typography variant="body2" sx={{ mb: 1 }}>
-        Kategória: {product.category}
+        {t("[id].Kategória")}: {product.category}
       </Typography>
       <Typography variant="body2" sx={{ mb: 1 }}>
-        Készlet: {product.stockQuantity}
+        {t("[id].Készlet")}: {product.stockQuantity}
       </Typography>
       <img
         src={product.imageUrl}
@@ -97,10 +103,10 @@ export default function ProductDetailPage() {
           })
         }
       >
-        Kosárba
+        {t("[id].Kosárba")}
       </Button>
       <Link href="/product" passHref>
-        <Button variant="outlined">Back to Product List</Button>
+        <Button variant="outlined">{t("[id].Vissza a terméklistához")}</Button>
       </Link>
     </Box>
   );

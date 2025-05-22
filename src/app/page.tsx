@@ -3,11 +3,14 @@
 import { Container, Typography, Button, TextField, Box } from "@mui/material";
 import { useState } from "react";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useSelector } from "react-redux";
+import { selectedLanguage } from "@/redux/languageSlice";
 
 export default function HomePage() {
   const [value, setValue] = useState("");
   const [count, setCount] = useState(0);
-  const { t } = useTranslation("french");
+  const language = useSelector(selectedLanguage);
+  const { t } = useTranslation(language);
 
   const handleClick = () => {
     const newCount: number = (count + 1) % 4; // 0-3 között váltakozik

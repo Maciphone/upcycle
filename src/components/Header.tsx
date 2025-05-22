@@ -6,6 +6,9 @@ import Link from "next/link";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useState } from "react";
 import LanguageSelect from "./LanguageSelect";
+import { useDispatch } from "react-redux";
+import { selectedLanguage, setLanguage } from "@/redux/languageSlice";
+import { useSelector } from "react-redux";
 
 const navLinks = [
   {
@@ -20,7 +23,17 @@ const navLinks = [
 ];
 
 export default function Header() {
-  const [language, setLanguage] = useState("hu");
+  //const [language, setLanguage] = useState("hu");
+  const dispatch = useDispatch();
+  const language = useSelector(selectedLanguage);
+  console.log("language", language);
+
+  const handleLanguageChange = (lang: string) => {
+    console.log("Kattintitt language:", lang);
+    dispatch(setLanguage(lang));
+    console.log("Selected language:", lang);
+    localStorage.setItem("language", lang);
+  };
 
   const { t } = useTranslation(language);
   return (
@@ -61,7 +74,7 @@ export default function Header() {
         </Stack>
         <LanguageSelect
           value={language}
-          onChange={(e) => setLanguage(e.target.value)}
+          onChange={(e) => handleLanguageChange(e.target.value)}
         />
       </Toolbar>
     </AppBar>

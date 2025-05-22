@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import Link from "next/link";
 import { IProduct } from "@/models/Product";
+import { useSelector } from "react-redux";
+import { selectedLanguage } from "@/redux/languageSlice";
+import { useTranslation } from "@/hooks/useTranslation";
 
 type Product = { id: string; name: string };
 
@@ -11,6 +14,8 @@ export default function ProductListPage() {
   const [products, setProducts] = useState<IProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const lang = useSelector(selectedLanguage);
+  const { t } = useTranslation(lang);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -29,13 +34,13 @@ export default function ProductListPage() {
     fetchProducts();
   }, []);
 
-  if (loading) return <Typography>Betöltés…</Typography>;
+  if (loading) return <Typography>…</Typography>;
   if (error) return <Typography color="error">Hiba: {error}</Typography>;
 
   return (
     <Box sx={{ p: 4 }}>
       <Typography variant="h4" gutterBottom>
-        Termékek
+        {t("Termékek")}
       </Typography>
       {products.map((p) => (
         <Link href={`/product/${p._id}`} passHref key={p._id.toString()}>
@@ -54,7 +59,7 @@ export default function ProductListPage() {
       ))}
       <Link href="/product/new" passHref>
         <Button variant="contained" sx={{ mt: 2 }}>
-          New
+          {t("product.Új termék hozzáadása")}
         </Button>
       </Link>
     </Box>
