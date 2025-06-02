@@ -1,0 +1,47 @@
+{
+  "app": {
+    "Üdv az UpCycle Shopban!": "Willkommen im UpCycle Shop!",
+    "Ez egy doboz belseje": "Inhalt des Kartons",
+    "Kattintások száma:": "Anzahl der Klicks:",
+    "Beírt szöveg:": "Eingetext:",
+    "Fedezd fel": "Entdecken"
+  },
+  "cart": {
+    "Ár": "Preis",
+    "Kép": "Bild",
+    "Mennyiség": "Menge",
+    "Termék": "Produkt",
+    "Törlés": "Löschen",
+    "Összeg": "Gesamtbetrag",
+    "Összesen": "Insgesamt",
+    "Kosár tartalma": "Inhalt des Warenkorbs",
+    "Kosár ürítése": "Warenkorb leeren",
+    "Nincs termék a kosárban.": "Keine Produkte im Warenkorb."
+  },
+  "product": {
+    "betöltés…": "Laden…",
+    "hiba": "Fehler:",
+    "Termékek": "Produkte",
+    "Új termék hozzáadása": "Neues Produkt hinzufügen"
+  },
+  "[id]": {
+    "back_to_product_list": "Zurück zur Produktliste",
+    "Termék nem található": "Produkt nicht gefunden",
+    "Vissza a terméklistához": "Zurück zur Produktliste",
+    "Termék név": "Produktname",
+    "Leírás": "Beschreibung",
+    "Ár": "Preis",
+    "Kategória": "Kategorie",
+    "Készlet": "Bestand",
+    "kosárba": "In den Warenkorb"
+  },
+  "header": {
+    "bejelentkezés": "Anmelden",
+    "regisztráció": "Registrieren",
+    "Kosár": "Warenkorb",
+    "Termékek": "Produkte",
+    "nyelv": "Sprache",
+    "Upcycle": "Upcycle",
+    "Kapcsolat": "Kontakt"
+  }
+}

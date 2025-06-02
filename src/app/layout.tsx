@@ -5,6 +5,7 @@ import { theme } from "./theme"; // az előbb írt theme fájl
 import Header from "@/components/Header";
 import { CartProvider } from "@/context/CartContext";
 import ReduxProvider from "@/redux/ReduxProvider";
+import { SessionProvider } from "next-auth/react";
 
 export default function RootLayout({
   children,
@@ -14,15 +15,18 @@ export default function RootLayout({
   return (
     <html lang="hu">
       <body>
-        <ReduxProvider>
-          <CartProvider>
-            <ThemeProvider theme={theme}>
-              <CssBaseline />
-              <Header />
-              {children}
-            </ThemeProvider>
-          </CartProvider>
-        </ReduxProvider>
+        <SessionProvider>
+          {/* A SessionProvider-t itt helyezzük el, hogy a gyermek komponensek hozzáférjenek a session adatokhoz */}
+          <ReduxProvider>
+            <CartProvider>
+              <ThemeProvider theme={theme}>
+                <CssBaseline />
+                <Header />
+                {children}
+              </ThemeProvider>
+            </CartProvider>
+          </ReduxProvider>
+        </SessionProvider>
       </body>
     </html>
   );

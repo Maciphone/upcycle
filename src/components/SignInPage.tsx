@@ -29,7 +29,9 @@ export default function SignInPage() {
     if (result?.error) {
       setError("Hibás email vagy jelszó.");
     } else {
-      window.location.href = "/";
+      //window.location.href = "/";
+      console.log("Sikeres bejelentkezés");
+      alert("Sikeres bejelentkezés!");
     }
   };
 

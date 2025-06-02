@@ -9,6 +9,7 @@ import LanguageSelect from "./LanguageSelect";
 import { useDispatch } from "react-redux";
 import { selectedLanguage, setLanguage } from "@/redux/languageSlice";
 import { useSelector } from "react-redux";
+import Profile from "./Profile";
 
 const navLinks = [
   {
@@ -76,6 +77,7 @@ export default function Header() {
           value={language}
           onChange={(e) => handleLanguageChange(e.target.value)}
         />
+        <Profile />
       </Toolbar>
     </AppBar>
   );
